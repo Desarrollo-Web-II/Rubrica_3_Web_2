@@ -1,9 +1,11 @@
 import express from "express";
 import bookingsRoutes from './routes/bookings.rutas.js'
 import roomsRoutes from './routes/rooms.rutas.js'
+import cors from 'cors'
 
 const app = express()
 
+app.use(cors())
 app.use(express.json())
 app.use('/api', bookingsRoutes)
 app.use('/api', roomsRoutes)
