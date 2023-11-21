@@ -1,24 +1,52 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import {Formik, Form} from 'formik'
-import {CrearRoomRequest} from '../api/rooms.api'
+//import {CrearRoomRequest} from '../api/rooms.api'
+//import { RoomContext } from '../context/RoomContext.jsx'
+import { useRooms } from '../context/RoomProvider.jsx'
+import { useParams } from 'react-router-dom'
+//import { useContext } from 'react'
 
 const Formulario = () => {
+    const [room, setRoom] = useState({
+        numero: "",
+        tipo: "",
+        valor: ""
+    })
+    const {createRooms, obtRoom, updateRoom} = useRooms()
+    const {id} = useParams()
+    useEffect(()=>{
+        const cargarRoom = async()=>{
+            if(id){
+                const habitacion = await obtRoom(id)
+                setRoom(habitacion)
+            }
+        }
+        cargarRoom()
+    },[])
+    //console.log(text)
   return (
     <div>
-        <Formik
-            initialValues={{
-                numero: null,
-                tipo: "",
-                valor: null
-            }}
-            onSubmit={async(values, actions)=>{console.log(values)
-            try {
-                const response = await CrearRoomRequest(values)
-                console.log(response)
-                actions.resetForm()
-            } catch (error) {
-                console.log(error)
+        <h2>
+            {
+                id ? 'Edicion de Habitacion' : 'Registro de Habitaciones'
             }
+        </h2>
+        <Formik
+            initialValues={room}
+            enableReinitialize={true}
+            onSubmit={async(values, actions)=>{console.log(values)
+                if (id) {
+                    await updateRoom(id, values)
+                } else {
+                     await createRooms(values)
+                }
+                
+                //actions.resetForm()
+                setRoom({
+                    numero: "",
+                    tipo: "",
+                    valor: ""
+                })
             }}
         >
             {({handleChange, handleSubmit, values, isSubmitting})=>(
