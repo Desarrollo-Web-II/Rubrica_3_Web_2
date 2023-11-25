@@ -28,7 +28,7 @@ const Formulario = () => {
     <div>
         <h2>
             {
-                id ? 'Edicion de Habitacion' : 'Registro de Habitaciones'
+                id ? 'Edicion de Habitacion' : 'Crear de Habitaciones'
             }
         </h2>
         <Formik
@@ -50,14 +50,34 @@ const Formulario = () => {
             }}
         >
             {({handleChange, handleSubmit, values, isSubmitting})=>(
-            <Form onSubmit={handleSubmit}>
-                <label className='form-label'>Numero de Habitacion</label>
-                <input type="number" placeholder='Ingrese el numero de Habitacion' name='numero' onChange={handleChange} value={values.numero}/>
-                <label className='form-label'>Tipo de Habitacion</label>
-                <input type="text" placeholder='Ingrese el tipo de Habitacion' name='tipo' onChange={handleChange} value={values.tipo}/>
-                <label className='form-label'>Valor de Habitacion</label>
-                <input type="number" placeholder='Ingrese el valor de Habitacion' name='valor' onChange={handleChange} value={values.valor}/>
-                <button className='btn-form' type='submit' disabled={isSubmitting}>Guardar</button>
+            <Form class="" onSubmit={handleSubmit}>
+                <div class="card">
+                    <div class="card shadow">
+                        <div class="card-header">
+                                <div class="row g-2">
+                                    <div class="form-group col-md-4">
+                                        <label class='form-label'>Numero de Habitacion</label>
+                                        <input type="number" class="form-control" placeholder='Ingrese el numero de Habitacion' name='numero' onChange={handleChange} value={values.numero}/>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label class='form-label'>Tipo de Habitacion</label>
+                                        <input type="text" class="form-control" placeholder='Ingrese el tipo de Habitacion' name='tipo' onChange={handleChange} value={values.tipo}/>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        {/* <label class='form-label'>Valor de Habitacion</label>
+                                        <input type="number" class="form-control" placeholder='Ingrese el valor de Habitacion' name='valor' onChange={handleChange} value={values.valor}/> */}
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label class='form-label'>Valor de Habitacion</label>
+                                        <input type="number" class="form-control" placeholder='Ingrese el valor de Habitacion' name='valor' onChange={handleChange} value={values.valor}/>
+                                    </div>
+                                    <div class="form-group col-12">
+                                        <button class='btn btn-primary' type='submit' disabled={isSubmitting}>Guardar</button>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                </div>
             </Form>
             )
             }

@@ -12,8 +12,8 @@ function App() {
 
   return (
     <RoomContextProvider>
-      <Navbar></Navbar>
-      <h1>Cliente</h1>
+      <Navbar/>
+      <h1>Administrador</h1>
       <Routes>
         <Route path='/' element={<Rooms></Rooms>}></Route>
         <Route path='/nuevo' element={<Formulario></Formulario>}></Route>
