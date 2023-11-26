@@ -1,6 +1,7 @@
 import express from "express";
 import bookingsRoutes from './routes/bookings.rutas.js'
 import roomsRoutes from './routes/rooms.rutas.js'
+import userRoutes from './routes/users.rutas.js'
 import cors from 'cors'
 
 const app = express()
@@ -9,6 +10,7 @@ app.use(cors())
 app.use(express.json())
 app.use('/api', bookingsRoutes)
 app.use('/api', roomsRoutes)
+app.use('/api', userRoutes)
 
 app.use((req,res)=>{
     res.status(404).json({
