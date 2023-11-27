@@ -7,14 +7,14 @@ import NotFound from './pages/NotFound.jsx'
 import Navbar from './components/Navbar.jsx'
 import { RoomContextProvider } from './context/RoomProvider.jsx'
 import { BookingContextProvider } from './context/BookingProvider.jsx'
+import { UserContextProvider } from './context/UserProvider.jsx'
 import Login from './pages/Login.jsx'
 import BookingForm from './pages/BookingForm.jsx'
 import Bookings from './pages/Bookings.jsx'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
+    <UserContextProvider>
     <RoomContextProvider>
     <BookingContextProvider>
       <Navbar/>
@@ -31,6 +31,7 @@ function App() {
       </Routes>
     </BookingContextProvider>
     </RoomContextProvider>
+    </UserContextProvider>
   )
 }
 

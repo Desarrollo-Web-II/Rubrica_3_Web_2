@@ -1,4 +1,5 @@
 import { pool } from "../db.js";
+import jwt from "jsonwebtoken";
 
 export const getUsers = async (req, res) =>{
     try {
@@ -13,7 +14,7 @@ export const login = async (req, res) =>{
     try {
         console.log(req.body)
         const {email, password} = req.body;
-        const [result] = await pool.query( 'SELECT * FROM usuarios WHERE email=? AND password=?',[email, password],(error)=>{
+        const [result] = await pool.query( 'SELECT * FROM users WHERE email=? AND password=?',[email, password],(error)=>{
             if (error) {
                 res.status(500).json({error: 'Error de servidor'})
                 console.error(error)

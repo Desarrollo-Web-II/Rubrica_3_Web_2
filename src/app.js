@@ -3,11 +3,13 @@ import bookingsRoutes from './routes/bookings.rutas.js'
 import roomsRoutes from './routes/rooms.rutas.js'
 import userRoutes from './routes/users.rutas.js'
 import cors from 'cors'
+import cookieParser from "cookie-parser";
 
 const app = express()
 
 app.use(cors())
 app.use(express.json())
+app.use(cookieParser())
 app.use('/api', bookingsRoutes)
 app.use('/api', roomsRoutes)
 app.use('/api', userRoutes)
