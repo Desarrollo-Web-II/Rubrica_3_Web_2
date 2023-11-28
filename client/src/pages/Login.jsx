@@ -1,6 +1,9 @@
 import React, { useState } from 'react'
 import {Formik, Form} from 'formik'
 import { useUsers } from '../context/UserProvider.jsx'
+import { useNavigate } from 'react-router-dom'
+
+
 
 const Login = () => {
   const [user, setUser] = useState({
@@ -9,6 +12,7 @@ const Login = () => {
   })
   const {iniciarSesion} = useUsers();
 
+  const navigate = useNavigate()
   return (
     <div className='container text-center col-6 mt-5'>
       <Formik
@@ -17,6 +21,7 @@ const Login = () => {
         onSubmit={async(values, actions)=>{
           //console.log(values)
               await iniciarSesion(values)  
+              navigate('/home')
           //actions.resetForm()
           setUser({
             email: "",
@@ -26,6 +31,7 @@ const Login = () => {
       >
         {({handleChange, handleSubmit, values, isSubmitting})=>(
         <Form onSubmit={handleSubmit}>
+          <h2>Iniciar Sesión</h2>
           <div className="mb-3">
               <label className='form-label'>Correo electronico</label>
               <input type="email" className='form-control' name='email' onChange={handleChange} value={values.email} required/>

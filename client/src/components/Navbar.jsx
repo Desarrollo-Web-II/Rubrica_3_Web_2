@@ -9,7 +9,7 @@ const Navbar = () => {
           
           <div className='d-flex options-navbar'>
             <Link className='btn btn-dark' to="/login">Iniciar sesion</Link> 
-            <Link className='btn btn-dark' to='/'>Inicio</Link>
+            <Link className='btn btn-dark' to='/home'>Inicio</Link>
             <Link className='btn btn-dark' to='/nuevo'>Crear Habitacion</Link>
             <Link className='btn btn-dark' to='/bookings'>Lista de Reservas</Link>
             <Link className='btn btn-dark' to='/newbooking'>Crear Reserva</Link>

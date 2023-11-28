@@ -3,6 +3,7 @@ import { GetRoomsRequest } from '../api/rooms.api'
 import { useEffect, useState } from 'react'
 import RoomCard from '../components/RoomCard.jsx'
 import { useRooms } from '../context/RoomProvider.jsx'
+import Navbar from '../components/Navbar'
 
 const Rooms = () => {
   const {rooms, setRooms, obtRooms} = useRooms()
@@ -10,16 +11,14 @@ const Rooms = () => {
     obtRooms()
   },[])
   return (
-    <div>
+    <><Navbar /><div>
       <h1>Habitaciones</h1>
       <ul>
-        {
-          rooms.map(room=>(
-            <RoomCard room={room} key={room.id}></RoomCard>
-          ))
-        }
+        {rooms.map(room => (
+          <RoomCard room={room} key={room.id}></RoomCard>
+        ))}
       </ul>
-    </div>
+    </div></>
   )
 }
 

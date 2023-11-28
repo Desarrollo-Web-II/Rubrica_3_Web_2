@@ -11,16 +11,17 @@ import { UserContextProvider } from './context/UserProvider.jsx'
 import Login from './pages/Login.jsx'
 import BookingForm from './pages/BookingForm.jsx'
 import Bookings from './pages/Bookings.jsx'
+import Home from './components/Home'
 
 function App() {
   return (
     <UserContextProvider>
     <RoomContextProvider>
     <BookingContextProvider>
-      <Navbar/>
-      <h1>Administrador</h1>
+      {/* <h1>Administrador</h1> */}
       <Routes>
-        <Route path='/' element={<Rooms></Rooms>}></Route>
+        <Route path='/home' element={<Home></Home>}></Route>
+        <Route path='/rooms' element={<Rooms></Rooms>}></Route>
         <Route path='/nuevo' element={<Formulario></Formulario>}></Route>
         <Route path='/editar/:id' element={<Formulario></Formulario>}></Route>
         <Route path='/bookings' element={<Bookings></Bookings>}></Route>

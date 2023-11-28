@@ -2,6 +2,7 @@ import React from 'react'
 import { useEffect } from 'react'
 import BookingCard from '../components/BookingCard.jsx'
 import { useBookings } from '../context/BookingProvider.jsx'
+import Navbar from '../components/Navbar.jsx'
 
 const Bookings = () => {
   const {bookings, setBookings, obtBookings} = useBookings()
@@ -9,16 +10,14 @@ const Bookings = () => {
     obtBookings()
   },[])
   return (
-    <div>
-      <h1>Reservas</h1>
+    <><Navbar /><div>
+      <h1>Lista de Reservas</h1>
       <ul>
-        {
-          bookings.map(booking=>(
-            <BookingCard booking={booking} key={booking.codigo}></BookingCard>
-          ))
-        }
+        {bookings.map(booking => (
+          <BookingCard booking={booking} key={booking.codigo}></BookingCard>
+        ))}
       </ul>
-    </div>
+    </div></>
   )
 }
 
