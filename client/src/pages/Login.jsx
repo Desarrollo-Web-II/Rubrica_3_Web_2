@@ -21,7 +21,7 @@ const Login = () => {
         onSubmit={async(values, actions)=>{
           //console.log(values)
               await iniciarSesion(values)  
-              navigate('/home')
+              navigate('/home')      
           //actions.resetForm()
           setUser({
             email: "",

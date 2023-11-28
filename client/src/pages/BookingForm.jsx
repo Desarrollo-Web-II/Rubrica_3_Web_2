@@ -3,6 +3,8 @@ import {Formik, Form} from 'formik'
 import { useBookings } from '../context/BookingProvider.jsx'
 import { useParams } from 'react-router-dom'
 import Navbar from '../components/Navbar.jsx'
+import { useNavigate } from 'react-router-dom'
+import { useUsers } from '../context/UserProvider.jsx'
 
 const BookingForm = () => {
     const [booking, setBooking] = useState({
@@ -15,6 +17,8 @@ const BookingForm = () => {
     })
     const {createBookings, obtBooking, updateBooking} = useBookings()
     const {codigo} = useParams()
+    const {tipo} = useUsers()
+    const navigate = useNavigate()
     console.log(codigo)
     useEffect(()=>{
         const cargarBooking = async()=>{
@@ -22,6 +26,11 @@ const BookingForm = () => {
                 const reserva = await obtBooking(codigo)
                 setBooking(reserva)
             }
+        }
+        if (tipo == 'user') {
+            
+        }else{
+            navigate('/home')
         }
         cargarBooking()
     },[])

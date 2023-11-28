@@ -27,10 +27,17 @@ export const login = async (req, res) =>{
                 email: email,
                 type: result[0].type
             }
+            //console.log(token_payload)
             const token = jwt.sign(token_payload, 'SecretKey', {expiresIn:'100s'})
-            console.log(token)
-            res.cookie('jwt',token, {httpOnly: true, maxAge: 300000})
-            res.status(200).json({message: 'Inicio de sesion exitoso'})
+            //console.log(token)
+            //res.cookie('prueba',token, {httpOnly: true, maxAge: 300000, secure: false})
+            const data = {
+                type: result[0].type,
+                token: token
+            }
+            //res.cookie('prueba','hello world', {httpOnly: false, maxAge: 300000, secure: false})
+            //res.cookie('cookie_name' , 'cookie_value').send(valores).status(200);
+            res.status(200).json({message: 'Inicio de sesion exitoso', data: data})
         } else {
             res.status(401).json({error: 'Valores invalidos'})
         }

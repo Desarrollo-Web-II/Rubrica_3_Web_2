@@ -3,7 +3,9 @@ import {Formik, Form} from 'formik'
 //import {CrearRoomRequest} from '../api/rooms.api'
 //import { RoomContext } from '../context/RoomContext.jsx'
 import { useRooms } from '../context/RoomProvider.jsx'
+import { useUsers } from '../context/UserProvider.jsx'
 import { useParams } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import Navbar from '../components/Navbar.jsx'
 //import { useContext } from 'react'
 
@@ -13,15 +15,21 @@ const Formulario = () => {
         tipo: "",
         valor: ""
     })
-    
     const {createRooms, obtRoom, updateRoom} = useRooms()
+    const {tipo} = useUsers()
     const {id} = useParams()
+    const navigate = useNavigate()
     useEffect(()=>{
         const cargarRoom = async()=>{
             if(id){
                 const habitacion = await obtRoom(id)
                 setRoom(habitacion)
             }
+        }
+        if (tipo == 'admin') {
+            
+        }else{
+            navigate('/home')
         }
         cargarRoom()
     },[])

@@ -3,11 +3,20 @@ import { GetRoomsRequest } from '../api/rooms.api'
 import { useEffect, useState } from 'react'
 import RoomCard from '../components/RoomCard.jsx'
 import { useRooms } from '../context/RoomProvider.jsx'
+import { useUsers } from '../context/UserProvider.jsx'
 import Navbar from '../components/Navbar'
+import { useNavigate } from 'react-router-dom'
 
 const Rooms = () => {
   const {rooms, setRooms, obtRooms} = useRooms()
+  const {tipo} = useUsers()
+  const navigate = useNavigate()
   useEffect(()=>{
+    if (tipo == 'admin') {
+            
+    }else{
+        navigate('/home')
+    }
     obtRooms()
   },[])
   return (
