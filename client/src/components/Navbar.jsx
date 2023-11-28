@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { useUsers } from '../context/UserProvider.jsx'
 
 const Navbar = () => {
-  const {tipo, init, cerr, cambiarSesion} = useUsers()
+  const {tipo, init, cerr, cambiarSesion, setTipo} = useUsers()
   return (
     <>
     <header>
@@ -13,7 +13,7 @@ const Navbar = () => {
             {
               tipo =='admin' ? (
                 <div className='d-flex options-navbar'>
-                  <Link className='btn btn-dark' to='/home'>Inicio</Link>
+                  <Link className='btn btn-dark' to='/'>Inicio</Link>
                   <Link className='btn btn-dark' to='/rooms'>Lista de Habitaciones</Link>
                   <Link className='btn btn-dark' to='/nuevo'>Crear Habitacion</Link>
                 </div>
@@ -24,7 +24,7 @@ const Navbar = () => {
             {
               tipo =='user' ? (
                 <div className='d-flex options-navbar'>
-                  <Link className='btn btn-dark' to='/home'>Inicio</Link>
+                  <Link className='btn btn-dark' to='/'>Inicio</Link>
                   <Link className='btn btn-dark' to='/bookings'>Lista de Reservas</Link>
                   <Link className='btn btn-dark' to='/newbooking'>Crear Reserva</Link>
                 </div>
@@ -35,7 +35,7 @@ const Navbar = () => {
 
           <div className='user'>
             <span className='username'></span>
-          
+            
               
               <button className='btn btn-outline-light'>Cerrar sesiòn</button>
               

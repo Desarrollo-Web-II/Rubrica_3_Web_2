@@ -20,7 +20,7 @@ function App() {
     <BookingContextProvider>
       {/* <h1>Administrador</h1> */}
       <Routes>
-        <Route path='/home' element={<Home></Home>}></Route>
+        <Route path='/' element={<Home></Home>}></Route>
         <Route path='/rooms' element={<Rooms></Rooms>}></Route>
         <Route path='/nuevo' element={<Formulario></Formulario>}></Route>
         <Route path='/editar/:id' element={<Formulario></Formulario>}></Route>

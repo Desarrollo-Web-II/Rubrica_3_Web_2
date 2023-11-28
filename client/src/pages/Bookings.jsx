@@ -14,7 +14,7 @@ const Bookings = () => {
     if (tipo == 'user') {
             
     }else{
-        navigate('/home')
+        navigate('/')
     }
     obtBookings()
   },[])

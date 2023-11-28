@@ -15,7 +15,7 @@ const Rooms = () => {
     if (tipo == 'admin') {
             
     }else{
-        navigate('/home')
+        navigate('/')
     }
     obtRooms()
   },[])

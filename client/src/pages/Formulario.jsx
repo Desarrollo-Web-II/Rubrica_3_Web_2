@@ -29,7 +29,7 @@ const Formulario = () => {
         if (tipo == 'admin') {
             
         }else{
-            navigate('/home')
+            navigate('/')
         }
         cargarRoom()
     },[])

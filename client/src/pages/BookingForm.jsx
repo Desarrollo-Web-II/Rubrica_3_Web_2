@@ -30,7 +30,7 @@ const BookingForm = () => {
         if (tipo == 'user') {
             
         }else{
-            navigate('/home')
+            navigate('/')
         }
         cargarBooking()
     },[])

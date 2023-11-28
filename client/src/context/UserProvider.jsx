@@ -42,7 +42,7 @@ export const UserContextProvider = ({children})=>{
         }
     }*/
     return(
-        <UserContext.Provider value={{iniciarSesion, tipo, init, cerr, cambiarSesion}}>
+        <UserContext.Provider value={{iniciarSesion, tipo, init, cerr, cambiarSesion, setTipo}}>
             {children}
         </UserContext.Provider>
     )
